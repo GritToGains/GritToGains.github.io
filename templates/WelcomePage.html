@@ -1,0 +1,53 @@
+﻿
+<!--This will contain a welcome message or a welcome back message with 2 buttons to start a workout or view
+    previous workouts-->
+<button type="button" class="btn" ng-click="deleteAllCookies()">Reset</button>
+<div class="container-fluid" ng-cloak>
+    <div class="container-fluid" ng-show="showFirstWelcome">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <h1>Welcome to Grit to Gains</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 panel-body" style="text-align:center">
+                <p>You are here because your determined to get in shape. Grit to Gains is a 
+                fitness tracker webapp. No need to download anything, no need to sign up for an account. 
+                Just bookmark the page and keep coming back to track your progress to a new you.
+                </p>
+            </div>
+            <div class="col-md-6 panel-body">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <h3>Do you have the Grit to get the Gains?</h3>
+            </div>
+        </div>
+    </div>
+    
+    <!--Show this if the user has already been here before-->
+    <div class="container-fluid" ng-hide="showFirstWelcome">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <h1>Welcome Back</h1>
+                <br/>
+                <h2>You have the Grit, Now lets see the Gains</h2>
+            </div>
+        </div>
+    </div>
+    <!--end hide-->
+
+    <!--Show this all the time. Buttons to allow the user to start a workout or
+        view previous workouts-->
+    <div class="container-fluid">
+        <div class="row" style="text-align:center">
+            <button class="button" ng-click="StartWorkout()">
+                <img src="/Content/images/dumbbell.svg" width="25" height="25" />
+                Start Workout
+                <img src="/Content/images/dumbbell.svg" width="25" height="25" />
+            </button>
+        </div>
+    </div>
+</div>

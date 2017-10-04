@@ -27,3 +27,25 @@
     background-color: #58fce3;
 }
 
+
+.navbar .nav > li > a, .navbar .nav > li > a:first-letter,
+.navbar .nav > li.current-menu-item > a,
+.navbar .nav > li.current-menu-ancestor > a {
+    font-size: 30px;
+}
+
+.button {
+    background-color: #29c107;
+    border-color: black;
+    color: black;
+    text-align: center;
+    border-radius: 8px;
+    border-width: 1px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    padding: 15px 30px;
+}
+
+
+

@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="js\app.js" />
+    <Content Include="js\controllers\MainPageController.js" />
+    <Content Include="js\controllers\WelcomePageController.js" />
+    <Content Include="js\controllers\WorkoutController.js" />
+    <Content Include="js\controllers\WorkoutPageController.js" />
+    <Content Include="templates\WorkoutPage.html" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -876,6 +882,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="templates\WelcomePage.html" />
     <Content Include="templates\navbar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
