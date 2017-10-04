@@ -1,5 +1,5 @@
 ﻿body {
-   padding-top: 70px;
+    padding-top: 70px;
 }
 
 @media screen and (min-width: 768px){
@@ -13,6 +13,12 @@
     }
 }
 
+@media screen and (max-width:768px){
+    .navbar-center {
+        padding-bottom: 5px;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .navbar-right {
         padding-right: 100px;
@@ -23,8 +29,18 @@
     }
 }
 
+
 .panel-body {
-    background-color: #58fce3;
+    background-color: rgba(62,160,146, 0.4);
+}
+
+.thumbnails .well {
+    background-color: rgba(62,160,146, 0.4);
+}
+
+
+ul#noBullet {
+    list-style-type: none !important;
 }
 
 
@@ -35,16 +51,103 @@
 }
 
 .button {
-    background-color: #29c107;
-    border-color: black;
-    color: black;
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    background-color: #fc4a1a;
+    border-color: white;
+    color: white;
     text-align: center;
-    border-radius: 8px;
-    border-width: 1px;
+    border: none;
     text-decoration: none;
     display: inline-block;
-    font-size: 17px;
-    padding: 15px 30px;
+    font-size: 25px;
+    padding: 25px 50px;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: rgba(252, 74, 26, 0.4);
+
+}
+
+.button-small {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    background-color: #fc4a1a;
+    border-color: white;
+    color: white;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    padding: 3px 10px;
+    transition-duration: 0.4s;
+}
+
+    .button-small:hover {
+        background-color: rgba(252, 74, 26, 0.4);
+    }
+
+h1 {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 30px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
+}
+
+h2{
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 22px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
+}
+
+h3 {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+}
+
+p {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+blockquote {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+pre {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714px;
+}
+
+.layer {
+    background-color: rgba(74, 189, 172, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
 }
 
 

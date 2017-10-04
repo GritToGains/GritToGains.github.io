@@ -67,10 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Content\images\gym1.jpg" />
     <Content Include="js\app.js" />
     <Content Include="js\controllers\MainPageController.js" />
     <Content Include="js\controllers\WelcomePageController.js" />
-    <Content Include="js\controllers\WorkoutController.js" />
     <Content Include="js\controllers\WorkoutPageController.js" />
     <Content Include="templates\WorkoutPage.html" />
     <Content Include="Scripts\version.json" />

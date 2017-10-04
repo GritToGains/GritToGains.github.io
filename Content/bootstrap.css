@@ -1085,8 +1085,9 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 1.42857143;
-    color: #353535;
-    background-color: #00e2c0;
+    color: white;
+    /*background-color: #4ABDAC;*/
+    background-image: url(images/gym1.jpg);
 }
 input,
 button,
