@@ -1,0 +1,29 @@
+﻿body {
+   padding-top: 70px;
+}
+
+@media screen and (min-width: 768px){
+    .navbar-center {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-right {
+        padding-right: 100px;
+    }
+
+    .navbar-left {
+        padding-left: 100px;
+    }
+}
+
+.panel-body {
+    background-color: #58fce3;
+}
+
