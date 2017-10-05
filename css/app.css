@@ -87,6 +87,15 @@ ul#noBullet {
         background-color: rgba(252, 74, 26, 0.4);
     }
 
+    @media screen and (max-width: 768px) {
+        .remove-padding {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
 h1 {
     font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     font-size: 30px;
@@ -112,6 +121,11 @@ h3 {
     font-variant: normal;
     font-weight: 500;
     line-height: 15.4px;
+}
+
+.inLine{
+    display: inline-block;
+    float: left;
 }
 
 p {

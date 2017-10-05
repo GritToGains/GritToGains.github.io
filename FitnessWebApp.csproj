@@ -72,6 +72,8 @@
     <Content Include="js\controllers\MainPageController.js" />
     <Content Include="js\controllers\WelcomePageController.js" />
     <Content Include="js\controllers\WorkoutPageController.js" />
+    <Content Include="js\directives\ngTouch.js" />
+    <Content Include="js\directives\pressHoldStart.js" />
     <Content Include="templates\WorkoutPage.html" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
@@ -891,6 +893,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

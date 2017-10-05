@@ -2,23 +2,82 @@
 
 //this controller will control the page that will display and store 
 //the current workout session
-fitnessTracker.controller('WorkoutPageContoller', function ($scope, $cookies, $log) {
+fitnessTracker.controller('WorkoutPageContoller', function ($scope, $cookies, $interval) {
 
-    $scope.subWeight = function (set) {
-        set.weight--;
+    $scope.changeWeight = function (set, string) {
+        if (string == '-') {
+            set.weight--;
+        }
+        else {
+            set.weight++;
+        }
+        
     }
 
-    $scope.addWeight = function (set) {
-        set.weight++;
+    $scope.changeRep = function (set, string) {
+        if (string == '-') {
+            set.reps--;
+        }
+        else {
+            set.reps++;
+        }
     }
 
-    $scope.subRep = function (set) {
-        set.reps--;
+    $scope.changeValue = function (set, opp, data) {
+        if (data == 'weight') {
+            if (opp == '-') {
+                set.weight--;
+            }
+            else {
+                set.weight++;
+            }
+        }
+        else {
+            if (opp == '-') {
+                set.reps--;
+            }
+            else {
+                set.reps++;
+            }
+        }
     }
 
-    $scope.addRep = function (set) {
-        set.reps++;
+    $scope.editSet = function (exercise, currentSet) {
+        for (var set in exercise) {
+            if (exercise[set].canEdit) {
+                exercise[set].canEdit = false;
+            }
+        }
+
+        currentSet.canEdit = true;
     }
+
+    $scope.addSet = function (exercise) {
+        exercise.push(
+            {
+                "exerciseName": 'Curl',
+                "set": exercise.length + 1,
+                "weight": 0,
+                "reps": 0,
+                "canEdit": true
+            });
+
+        $scope.editSet(exercise, exercise[exercise.length - 1]);
+        
+    }
+
+    var promise;
+    $scope.mouseDown = function (set, opp, data) {
+        promise = $interval(function () {
+            $scope.changeValue(set, opp, data);
+        }, 200);
+
+    };
+
+    $scope.mouseUp = function (set, opp, data) {
+        $interval.cancel(promise);
+       
+    };
 
     $scope.workout =
         {
@@ -31,13 +90,15 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $cookies, $l
                         "exerciseName": 'Curl',
                         "set": 1,
                         "weight": 20,
-                        "reps": 10
+                        "reps": 10,
+                        "canEdit": false
                     },
                     {
                         "exerciseName": 'Curl',
                         "set": 2,
                         "weight": 15,
-                        "reps": 10
+                        "reps": 10,
+                        "canEdit": true
                     }
                 ],
                 "BenchPress": [
@@ -45,7 +106,8 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $cookies, $l
                         "exerciseName": 'Benchpress',
                         "set": 1,
                         "weight": 100,
-                        "reps":8
+                        "reps": 8,
+                        "canEdit": true
                     }
                 ],
                 "Triceps": [
@@ -53,13 +115,15 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $cookies, $l
                         "exerciseName": 'Triceps',
                         "set": 1,
                         "weight": 40,
-                        "reps": 5
+                        "reps": 5,
+                        "canEdit": false
                     },
                     {
                         "exerciseName": 'Triceps',
                         "set": 2,
                         "weight": 40,
-                        "reps": 3
+                        "reps": 3,
+                        "canEdit": true
                     }
                 ]
 
