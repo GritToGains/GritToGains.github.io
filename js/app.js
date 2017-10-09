@@ -11,5 +11,10 @@ var fitnessTracker = angular.module('fitnessTracker',['ngRoute', 'ngCookies', 'n
             {
                 templateUrl: 'templates/WorkoutPage.html',
                 controller: 'WorkoutPageContoller'
+            })
+        $routeProvider.when('/customActivity',
+            {
+                templateUrl: 'templates/customActivity.html',
+                controller: 'customActivityController'
             });
     });

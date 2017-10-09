@@ -3,23 +3,23 @@ Time: {{workout.time}}<br />
 Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
 
 <!--This page is where the user will enter their workout information-->
-<div class="container-fluid remove-padding" ng-cloak style="padding-top:50px">
+<div class="container-fluid remove-padding" ng-cloak style="padding-top:50px" ng-model="workout">
     <ul id="noBullet" class="thumbnails remove-padding">
         <li ng-repeat="exercise in workout.exercises" class="col-md-6">
             <div class="well" >
-                <div ng-repeat="set in exercise" style="width: 100%;"  >
+                <div ng-repeat="set in exercise" style="width: 100%;"  ng-click="editSet(exercise, set)" ng-model="set.canEdit">
 
                     <div class="row">
                         <div class="col-md-12" >
                             <h4 class="inLine">{{set.exerciseName}}</h4>
-                            <h4 class="inLine" style="float:right" ng-click="editSet(exercise, set)" ng-model="set.canEdit">Set {{set.set}}</h4>
+                            <h4 class="inLine" style="float:right" >Set {{set.set}}</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-2">
                             <h4 class="inLine">Weight: {{set.weight}}</h4>
                         </div>
-                        <div class="col-md-2" style="text-align: right;" ng-if="set.canEdit">
+                        <div class="col-md-4" style="text-align: right;" ng-if="set.canEdit">
                             <button class="button-small" ng-mousedown="mouseDown(set, '-', 'weight')" ng-mouseup="mouseUp(set, '-', 'weight')" 
                                     ng-touchstart="mouseDown(set, '-', 'weight')" ng-touchend="mouseUp(set, '-', 'weight')" ng-tap="changeValue(set, '-', 'weight')"
                                     ng-model="set.weight">-</button>
@@ -32,13 +32,13 @@ Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
                         <div class="col-md-2">
                             <h4 class="inLine">Reps: {{set.reps}}</h4>
                         </div>
-                        <div class="col-md-2"  style="text-align: right;"ng-if="set.canEdit">
+                        <div class="col-md-4"  style="text-align: right;"ng-if="set.canEdit">
                             <button class="button-small" ng-mousedown="mouseDown(set, '-', 'rep')" ng-mouseup="mouseUp(set, '-', 'rep')" 
                                     ng-touchstart="mouseDown(set, '-', 'rep')" ng-touchend="mouseUp(set, '-', 'rep')" ng-tap="changeValue(set, '-', 'rep')"
-                                    ng-model="set.weight">-</button>
+                                    ng-model="set.reps">-</button>
                                 <button class="button-small" ng-mousedown="mouseDown(set, '+', 'rep')" ng-mouseup="mouseUp(set, '+', 'rep')" 
                                     ng-touchstart="mouseDown(set, '+', 'rep')" ng-touchend="mouseUp(set, '+', 'rep')" ng-tap="changeValue(set, '+', 'rep')"
-                                    ng-model="set.weight">+</button>
+                                    ng-model="set.reps">+</button>
                         </div>
                     </div>
                     <hr />
@@ -48,4 +48,18 @@ Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
             </div>
         </li>
     </ul>
+    <div class="row">
+        <div class="col-md-12" style="padding: 20px 20px; text-align: center"  >
+            <select ng-model="newActivity" ng-change="addNewActivity()" >
+                <option value="" selected="selected">Add New Activity</option>
+                <option value="{{option}}" ng-repeat="option in activities">{{option}}</option>
+                <!--<option value="" selected="selected">Add new activity</option>
+                <option value="custom">Custom</option>
+                <option value="Curl">Curl</option>
+                <option value="BenchPress">Bench Press</option>
+                <option value="DeadLift">Dead Lift</option>-->
+            </select>
+        </div>
+    </div>
+    <br/>
 </div>
