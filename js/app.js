@@ -1,6 +1,6 @@
 ﻿'use strict'
 
-var fitnessTracker = angular.module('fitnessTracker',['ngRoute', 'ngCookies', 'ngTouch'])
+var fitnessTracker = angular.module('fitnessTracker', ['ngRoute', 'ngCookies', 'ngTouch'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/welcome',
             {

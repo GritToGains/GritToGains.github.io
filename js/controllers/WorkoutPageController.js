@@ -86,6 +86,7 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $co
 
 
 
+
     $scope.addNewActivity = function () {
         if ($scope.newActivity == 'Custom') {
             $window.location.href = '#!/customActivity';

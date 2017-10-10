@@ -3,6 +3,10 @@ Time: {{workout.time}}<br />
 Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
 
 <!--This page is where the user will enter their workout information-->
+<!--<button ng-controller="workoutSideBarController" ng-click="openNav()">Open</button>-->
+
+<div ng-include="'templates/workoutPageSideNavbar.html'"></div>
+
 <div class="container-fluid remove-padding" ng-cloak style="padding-top:50px" ng-model="workout">
     <ul id="noBullet" class="thumbnails remove-padding">
         <li ng-repeat="exercise in workout.exercises" class="col-md-6">
