@@ -2,12 +2,11 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarItems">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            <div  style="right: 10px; top: 5px" id="sideMenuDiv" ng-click="openNav()" ng-tap="openNav()" ng-controller="workoutSideBarController">
+                        <div id="sideBarOpen"></div>
+                        <div id="sideBarOpen"></div>
+                        <div id="sideBarOpen"></div>
+                    </div>
             <h1 class="nav navbar-center" style="color: #666970; font-size:40px; padding-top: 5px;">Grit to Gains</h1>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
