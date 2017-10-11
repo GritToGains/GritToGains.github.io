@@ -12,10 +12,9 @@ fitnessTracker.service('workoutService', function () {
     }
 
     this.activities = {
-        "1": "Custom",
-        "2": "Curl",
-        "3": "BenchPress",
-        "4": "Dead Lift"
+        "1": "Curl",
+        "2": "BenchPress",
+        "3": "Dead Lift"
     }
 
     //this.newActivity;
@@ -57,7 +56,7 @@ fitnessTracker.service('workoutService', function () {
     return {
         addNewActivity: this.addNewActivity,
         doesContainActivity: this.doesContainActivity,
-        newActivity: this.newActivity,
+        //newActivity: this.newActivity,
         workout: this.workout,
         activities: this.activities
     };

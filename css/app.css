@@ -213,6 +213,10 @@ pre {
     transition: 0.3s
 }
 
+.sidenav input, .sidenav button {
+    transition: 0.3s;
+}
+
 .sidenav a:hover, .offcanvas a:focus{
     color: lightgray;
 }
@@ -240,6 +244,7 @@ pre {
     background-color: #F7B733;
     margin: 0 0 3px 0;
     padding-bottom: 5px;
+    cursor: default;
 }
 
 #sideMenuDiv {
@@ -248,4 +253,22 @@ pre {
 }
 
 
+/*
+    Color Pallette is 
+    Fresh: 
+    #4ABDAC
+    rgb(74, 189, 172)
 
+    Vermillion:
+    #FC4A1A
+    rgb(252, 74, 26)
+
+    Sunshine
+    #F7B733
+    rgb(247, 183, 51)
+
+    Clean
+    #DFDCE3
+    rgb(223, 220, 227)
+
+*/

@@ -3,7 +3,7 @@
 //this controller will control the page that will display and store 
 //the current workout session
 fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $cookies, $interval, workoutService) {
-    $scope.newActivity = workoutService.newActivity;
+    $scope.newActivity;
     $scope.workout = workoutService.workout;
     $scope.activities = workoutService.activities;
 
