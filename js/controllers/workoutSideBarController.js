@@ -3,14 +3,7 @@
 fitnessTracker.controller('workoutSideBarController', function ($scope, workoutService) {
     $scope.activities = workoutService.activities;
     $scope.customAct;
-
-    $scope.closeNav = function () {
-        document.getElementById("workoutSideBar").style.width = "0";
-    }
-
-    $scope.openNav = function () {
-        document.getElementById("workoutSideBar").style.width = "250px";
-    }
+    $scope.isWorkoutPageOpen = true;
 
     $scope.addActivity = function (act) {
         workoutService.addNewActivity(act);

@@ -71,6 +71,16 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $co
 
     }
 
+    $scope.delSet = function (exercise) {
+        if (exercise.length > 1) {
+            exercise.pop();
+        }
+        else {
+            delete $scope.workout.exercises[exercise[0].exerciseName];
+        }        
+    }
+
+
     var promise;
     $scope.mouseDown = function (set, opp, data) {
         promise = $interval(function () {

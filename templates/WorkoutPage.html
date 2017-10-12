@@ -5,8 +5,8 @@ Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
 <!--This page is where the user will enter their workout information-->
 <!--<button ng-controller="workoutSideBarController" ng-click="openNav()">Open</button>-->
 
-<div ng-include="'templates/workoutPageSideNavbar.html'"></div>
-
+<!--<div ng-include="'templates/workoutPageSideNavbar.html'"></div>-->
+<ng-include src="'templates/sideNav.html'"></ng-include>
 <div class="container-fluid remove-padding" ng-cloak style="padding-top:50px" ng-model="workout">
     <ul id="noBullet" class="thumbnails remove-padding">
         <li ng-repeat="exercise in workout.exercises" class="col-md-6">
@@ -49,10 +49,12 @@ Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
 
                 </div>
                 <button class="button-small" ng-click="addSet(exercise)" ng-model="exercise">Add Set</button>
-                <button class="button-small" style="float:right">Del Set</button>
+                <button class="button-small" ng-click="delSet(exercise)" style="float:right">Del Set</button>
             </div>
         </li>
     </ul>
+
+    <!--
     <div class="row">
         <div class="col-md-12" style="padding: 20px 20px; text-align: center"  >
             <select ng-model="newActivity" ng-change="addNewActivity()" >
@@ -62,9 +64,10 @@ Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
                 <option value="custom">Custom</option>
                 <option value="Curl">Curl</option>
                 <option value="BenchPress">Bench Press</option>
-                <option value="DeadLift">Dead Lift</option>-->
+                <option value="DeadLift">Dead Lift</option>
             </select>
         </div>
-    </div>
+    </div>-->
+
     <br/>
 </div>
