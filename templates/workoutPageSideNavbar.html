@@ -4,7 +4,8 @@
             <div>
                 <h2>Custom</h2>
                 <form>
-                    <input type="text" ng-model="customAct" placeholder="Enter Custom Activity" size="15" />
+                    <input type="text" ng-model="data.customAct" placeholder="Enter Custom Activity" size="15" />
+                    <label>{{customAct}}</label>
                     <button style="float: right;" type="submit" class="button-small" ng-click="addCustomActivity()" ng-tap="addCustomActivity()">Add</button>
                 </form>
             </div>

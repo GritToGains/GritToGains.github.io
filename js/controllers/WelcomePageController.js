@@ -4,26 +4,32 @@
 //will display welcome back if the user has been here alrealy
 //will display Welcome to Grit To gains if they havent been here
 
-fitnessTracker.controller('WelcomePageController', function ($scope, $cookies, $window) {
+fitnessTracker.controller('WelcomePageController', function ($scope, $window, storageService) {
     $scope.showFirstWelcome;
+    $scope.showCreateButton;
+    $scope.userName;
 
-    $scope.StartWorkout = function () {
-        $cookies.put('visit', true);
-        $window.location.href = '#!/workout';
+    $scope.createUser = function () {
+        storageService.createUser($scope.userName);
+        $window.location.href = '#!/viewWorkouts';
     }
 
-    $scope.deleteAllCookies = function () {
-        $cookies.remove('visit');
+    $scope.showWorkouts = function () {
+        $window.location.href = '#!/viewWorkouts';
     }
 
-    $scope.$on('$viewContentLoaded', function () {
-        var hasVisitCookie = $cookies.get('visit');
-        if (hasVisitCookie) {
+    $scope.loadUser = function () {
+        if (storageService.loadUser()) {
+            $scope.showCreateButton = false;
             $scope.showFirstWelcome = false;
         }
         else {
-            $scope.showFirstWelcome = true;
+            $scope.showCreateButton = true;
+            $scope.showFirstWelcome = true
         }
-    });
+            
+    }
+
+    $scope.loadUser();
 
 });

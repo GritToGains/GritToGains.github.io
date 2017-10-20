@@ -2,7 +2,9 @@
 
     <a href="javascript:void(0)" class="closebtn" ng-tap="closeNav()" ng-click="closeNav()">&times;</a>
 
-    <div ng-controller="workoutSideBarController" ng-include="'templates/workoutPageSideNavbar.html'" ng-if="workout" ></div>
-    <div  ng-include="'templates/defaultSideNav.html'" ng-if="welcome"></div>
+    <div ng-controller="workoutSideBarController" ng-include="'templates/workoutPageSideNavbar.html'" ng-if="workout" >
+    </div>
+    <hr/>
+    <div  ng-include="'templates/defaultSideNav.html'" ></div>
 
 </div>

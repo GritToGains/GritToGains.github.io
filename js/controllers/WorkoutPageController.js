@@ -2,10 +2,23 @@
 
 //this controller will control the page that will display and store 
 //the current workout session
-fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $cookies, $interval, workoutService) {
+fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $interval, workoutService, storageService) {
     $scope.newActivity;
-    $scope.workout = workoutService.workout;
+    $scope.workout = workoutService.currentWorkout;
     $scope.activities = workoutService.activities;
+    $scope.data = workoutService.data;
+
+    $scope.onPageLoad = function () {
+        storageService.loadUser();
+        //$scope.loadWorkout();
+        $scope.workout = workoutService.newWorkout();
+    };
+
+    $scope.$watch('workout', function (newVal, oldVal) {
+        //console.log("Changed", Object.keys($scope.workout.exercises).length);
+        if (Object.keys($scope.workout.exercises).length > 0)
+            workoutService.hideMessage();
+    }, true);
 
     $scope.changeWeight = function (set, string) {
         if (string == '-') {
@@ -55,6 +68,8 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $co
         if (currentSet.canEdit == false) {
             currentSet.canEdit = true;
         }
+
+        $scope.saveWorkout();
     }
 
     $scope.addSet = function (exercise) {
@@ -68,7 +83,7 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $co
             });
 
         $scope.editSet(exercise, exercise[exercise.length - 1]);
-
+        $scope.saveWorkout();
     }
 
     $scope.delSet = function (exercise) {
@@ -77,7 +92,12 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $co
         }
         else {
             delete $scope.workout.exercises[exercise[0].exerciseName];
-        }        
+        }
+        $scope.saveWorkout();
+    }
+
+    $scope.saveWorkout = function() {
+        workoutService.saveWorkout();
     }
 
 
@@ -86,25 +106,109 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $co
         promise = $interval(function () {
             $scope.changeValue(set, opp, data);
         }, 100);
-
+        
     };
 
     $scope.mouseUp = function (set, opp, data) {
         $interval.cancel(promise);
-
+        $scope.saveWorkout();
     };
 
+    $scope.getExerciseName = function(exercise) {
+       return exercise[0].exerciseName.replace(/\s+/g, '');
+        console.log("exercise naem", exercise[0].exerciseName.replace(/\s+/g, ''));
 
-
-
-    $scope.addNewActivity = function () {
-        if ($scope.newActivity == 'Custom') {
-            $window.location.href = '#!/customActivity';
-        } else {
-            workoutService.addNewActivity($scope.newActivity);
-        }
-       
     }
+
+    $scope.onPageLoad();
+
+    //$scope.newWorkout = function () {
+    //    $scope.workout = workoutService.newWorkout();
+    //    //console.log("What is returned", workoutService.newWorkout());
+    //    //console.log("Controller workout: ", $scope.workout);
+    //};
+
+    //$scope.continueWorkout = function () {
+    //    $scope.workout = workoutService.continueWorkout();
+    //    console.log("Continuing Workout: ", $scope.workout);
+
+    //};
+
+
+
+    ////*************************************************************************************************************************************************************888
+
+    //$scope.saveState = function () {
+    //    //save the workout
+    //    console.log("Saving...");
+
+    //    $window.localStorage.setItem("workout", JSON.stringify($scope.workout));
+    //}
+
+    //$scope.restoreState = function () {
+    //    //restore the workout
+    //    console.log("Restoring...");
+
+    //    workoutService.currentWorkout = ($window.localStorage.getItem("workout") !== null) ? JSON.parse($window.localStorage.getItem("workout")) : [];
+    //    $scope.workout = workoutService.currentWorkout;
+
+    //    console.log("Restored", workoutService.currentWorkout);
+    //}
+
+    //$scope.deleteState = function () {
+    //    //delete the saved state
+    //    console.log("Deleting...");
+
+    //    $window.localStorage.removeItem("workout");
+    //}
+
+    ////testing code from storage Service
+    //$scope.saveWorkout = function () {
+    //    storageService.saveWorkout(workoutService.currentWorkout);
+    //};
+
+    //$scope.saveUser = function() {
+    //    storageService.saveUser();
+    //};
+
+    //$scope.loadUser = function () {
+    //    storageService.loadUser();
+    //};
+
+    //$scope.loadWorkout = function () {
+    //    var test = storageService.getWorkout(-1);
+    //    console.log("Loadeed workout", test);
+    //    workoutService.currentWorkout = test;
+    //    $scope.workout = workoutService.currentWorkout;
+        
+    //}
+
+
+    //$scope.testFunc = function () {
+    //    console.log("Workout date", workoutService.currentWorkout);
+
+    //    console.log("Workout time", workoutService.currentWorkout);
+
+    //    console.log("Controller workout", $scope.workout);
+
+    //}
+
+   
+
+    //depreciated code. This is now in the workoutservice. 
+    //$scope.addNewActivity = function () {
+    //    if ($scope.newActivity == 'Custom') {
+    //        $window.location.href = '#!/customActivity';
+    //    } else {
+    //        workoutService.addNewActivity($scope.newActivity);
+    //    }
+
+    //    if (!$scope.showMessage)
+    //        $scope.showMessage = true;
+
+    //    console.log("Changed showMessage", $scope.showMessage);
+       
+    //}
 
 
 

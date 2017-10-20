@@ -10,12 +10,14 @@
         top: 0;
         text-align: center;
         margin: auto;
+        z-index: 0;
     }
 }
 
 @media screen and (max-width:768px){
     .navbar-center {
         padding-bottom: 5px;
+        z-index: 0;
     }
 }
 
@@ -30,8 +32,14 @@
 }
 
 
-.panel-body {
+.panel-body, .panel, .panel-default, .panel-group {
     background-color: rgba(62,160,146, 0.4);
+    border: none;
+}
+
+.panel-heading {
+    background-image: none;
+    background-color: #DFDCE3 !important;
 }
 
 .thumbnails .well {
@@ -67,6 +75,20 @@ ul#noBullet {
 .button:hover {
     background-color: rgba(252, 74, 26, 0.4);
 
+}
+
+.table {
+    border: thin;
+    border-color: white;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgb(247, 183, 51);
+}
+
+.hiddenRow {
+    padding: 0 !important;
+    border: none;
 }
 
 .button-small {

@@ -3,7 +3,6 @@
     previous workouts-->
 <ng-include src="'templates/sideNav.html'"></ng-include>
 <button type="button" class="btn" ng-click="deleteAllCookies()">Reset</button>
-
 <div class="container-fluid" ng-cloak style="padding-top: 50px;">
     <div class="container-fluid" ng-show="showFirstWelcome">
         <div class="row">
@@ -43,9 +42,18 @@
         view previous workouts-->
     <div class="container-fluid">
         <div class="row" style="text-align:center">
-            <button class="button" ng-click="StartWorkout()">
+            <form ng-show="showCreateButton">
+                <label>Enter your Name</label><br />
+                <input type="text" required ng-model="userName"  /><br /><br/>
+                <button  class="button" ng-click="createUser()" ng-tap="createUser()">
+                    <img src="/Content/images/dumbbell.svg" width="25" height="25" />
+                    Start your Gains
+                    <img src="/Content/images/dumbbell.svg" width="25" height="25" />
+                </button>
+            </form>
+            <button ng-hide="showCreateButton" class="button" ng-click="showWorkouts()" ng-tap="showWorkouts()">
                 <img src="/Content/images/dumbbell.svg" width="25" height="25" />
-                Start Workout
+                Continue Your Gains
                 <img src="/Content/images/dumbbell.svg" width="25" height="25" />
             </button>
         </div>

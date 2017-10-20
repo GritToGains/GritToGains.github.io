@@ -17,4 +17,10 @@ var fitnessTracker = angular.module('fitnessTracker', ['ngRoute', 'ngCookies', '
                 templateUrl: 'templates/customActivity.html',
                 controller: 'customActivityController'
             });
+        $routeProvider.when('/viewWorkouts',
+            {
+                templateUrl: 'templates/viewWorkouts.html',
+                controller: 'viewWorkoutsController'
+            });
+        $routeProvider.otherwise('/welcome');
     });

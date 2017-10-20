@@ -1,0 +1,60 @@
+﻿
+
+<ng-include src="'templates/sideNav.html'"></ng-include>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <h1>Past Worktouts</h1>
+        </div>
+    </div>
+    <hr />
+
+   
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{user.name}}</h2>
+            </div>
+        </div>
+        <div class="table-responsive"  style="border-collapse:collapse;">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="workout in user.workouts">
+                    <tr data-toggle="collapse" data-target="#{{getHash(workout.date, workout.time)}}" class="accordion-toggle">
+                        <td>{{workout.date}} {{dayOfWeek(workout.date)}}</td>
+                        <td>{{workout.time}}</td>
+                    </tr>
+                    <tr >
+                        <td colspan="2" class="hiddenRow" >
+                            <div class="accordian-body collapse" id="{{getHash(workout.date, workout.time)}}" >
+                                <div ng-repeat="exercise in workout.exercises">
+                                   <div class="panel">
+                                       <div class="row" >
+                                           <div class="col-md-4" ng-repeat="set in exercise">
+                                               <h3>{{set.exerciseName}}</h3>
+                                               Set {{set.set}}<br />
+                                               Weight: {{set.weight}}<br />
+                                               Reps: {{set.reps}}
+                                           </div>
+                                       </div>
+                                   </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+</div>

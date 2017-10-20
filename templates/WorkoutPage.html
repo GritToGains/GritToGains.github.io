@@ -8,49 +8,98 @@ Exercise 1: {{workout.exercises.curl[0].exerciseName}}-->
 <!--<div ng-include="'templates/workoutPageSideNavbar.html'"></div>-->
 <ng-include src="'templates/sideNav.html'"></ng-include>
 <div class="container-fluid remove-padding" ng-cloak style="padding-top:50px" ng-model="workout">
+    <!--<div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <input type="button" ng-click="saveState()" value="Save State" />
+            <input type="button" ng-click="restoreState()" value="Restore State" />
+            <input type="button" ng-click="deleteState()" value="Delete State" />
+            <input type="button" ng-click="testFunc()" value="Test Function" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <input type="button" ng-click="saveWorkout()" value="Save Workout" />
+            <input type="button" ng-click="saveUser()" value="Save User" />
+            <input type="button" ng-click="loadUser()" value="Load User" />
+            <input type="button" ng-click="loadWorkout()" value="Load Workout" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <input type="button" ng-click="continueWorkout()" value="Continue Workout" />
+            <input type="button" ng-click="newWorkout()" value="New Workout" />
+        </div>
+    </div>-->
+    <div class="row" ng-show="data.showMessage">
+        <div class="col-md-12">
+            <img style="float: right" class="img-responsive" src="../Content/images/startAddingSets.png" />
+        </div>
+    </div>
+
+
+
     <ul id="noBullet" class="thumbnails remove-padding">
         <li ng-repeat="exercise in workout.exercises" class="col-md-6">
-            <div class="well" >
-                <div ng-repeat="set in exercise" style="width: 100%;"  ng-click="editSet(exercise, set)" ng-model="set.canEdit">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="remove-padding panel-heading" >
+                        <h1 class="" data-toggle="collapse" data-target=#{{getExerciseName(exercise)}}>
+                            {{exercise[0].exerciseName}}
+                        </h1>
+                    </div> 
 
-                    <div class="row">
-                        <div class="col-md-12" >
-                            <h4 class="inLine">{{set.exerciseName}}</h4>
-                            <h4 class="inLine" style="float:right" >Set {{set.set}}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h4 class="inLine">Weight: {{set.weight}}</h4>
-                        </div>
-                        <div class="col-md-4" style="text-align: right;" ng-if="set.canEdit">
-                            <button class="button-small" ng-mousedown="mouseDown(set, '-', 'weight')" ng-mouseup="mouseUp(set, '-', 'weight')" 
-                                    ng-touchstart="mouseDown(set, '-', 'weight')" ng-touchend="mouseUp(set, '-', 'weight')" ng-tap="changeValue(set, '-', 'weight')"
-                                    ng-model="set.weight">-</button>
-                            <button class="button-small" ng-mousedown="mouseDown(set, '+', 'weight')" ng-mouseup="mouseUp(set, '+', 'weight')"
-                                    ng-touchstart="mouseDown(set, '+', 'weight')" ng-touchend="mouseUp(set, '+', 'weight')" ng-tap="changeValue(set, '+', 'weight')" 
-                                    ng-model="set.weight">+</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h4 class="inLine">Reps: {{set.reps}}</h4>
-                        </div>
-                        <div class="col-md-4"  style="text-align: right;"ng-if="set.canEdit">
-                            <button class="button-small" ng-mousedown="mouseDown(set, '-', 'rep')" ng-mouseup="mouseUp(set, '-', 'rep')" 
-                                    ng-touchstart="mouseDown(set, '-', 'rep')" ng-touchend="mouseUp(set, '-', 'rep')" ng-tap="changeValue(set, '-', 'rep')"
-                                    ng-model="set.reps">-</button>
-                                <button class="button-small" ng-mousedown="mouseDown(set, '+', 'rep')" ng-mouseup="mouseUp(set, '+', 'rep')" 
-                                    ng-touchstart="mouseDown(set, '+', 'rep')" ng-touchend="mouseUp(set, '+', 'rep')" ng-tap="changeValue(set, '+', 'rep')"
-                                    ng-model="set.reps">+</button>
-                        </div>
-                    </div>
-                    <hr />
+                    <div id="{{getExerciseName(exercise)}}" class="well panel-collapse collapse in">
+                        <div ng-repeat="set in exercise" style="width: 100%;" ng-click="editSet(exercise, set)" ng-model="set.canEdit">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="inLine">{{set.exerciseName}}</h4>
+                                    <h4 class="inLine" style="float:right">Set {{set.set}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="inLine">Weight: {{set.weight}}</h4>
+                                </div>
+                                <div class="col-md-4" style="text-align: right;" ng-if="set.canEdit">
+                                    <button class="button-small" ng-mousedown="mouseDown(set, '-', 'weight')" ng-mouseup="mouseUp(set, '-', 'weight')"
+                                            ng-touchstart="mouseDown(set, '-', 'weight')" ng-touchend="mouseUp(set, '-', 'weight')" ng-tap="changeValue(set, '-', 'weight')"
+                                            ng-model="set.weight">
+                                        -
+                                    </button>
+                                    <button class="button-small" ng-mousedown="mouseDown(set, '+', 'weight')" ng-mouseup="mouseUp(set, '+', 'weight')"
+                                            ng-touchstart="mouseDown(set, '+', 'weight')" ng-touchend="mouseUp(set, '+', 'weight')" ng-tap="changeValue(set, '+', 'weight')"
+                                            ng-model="set.weight">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="inLine">Reps: {{set.reps}}</h4>
+                                </div>
+                                <div class="col-md-4" style="text-align: right;" ng-if="set.canEdit">
+                                    <button class="button-small" ng-mousedown="mouseDown(set, '-', 'rep')" ng-mouseup="mouseUp(set, '-', 'rep')"
+                                            ng-touchstart="mouseDown(set, '-', 'rep')" ng-touchend="mouseUp(set, '-', 'rep')" ng-tap="changeValue(set, '-', 'rep')"
+                                            ng-model="set.reps">
+                                        -
+                                    </button>
+                                    <button class="button-small" ng-mousedown="mouseDown(set, '+', 'rep')" ng-mouseup="mouseUp(set, '+', 'rep')"
+                                            ng-touchstart="mouseDown(set, '+', 'rep')" ng-touchend="mouseUp(set, '+', 'rep')" ng-tap="changeValue(set, '+', 'rep')"
+                                            ng-model="set.reps">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <hr />
 
+                        </div>
+                        <button class="button-small" ng-click="addSet(exercise)" ng-model="exercise">Add Set</button>
+                        <button class="button-small" ng-click="delSet(exercise)" style="float:right">Del Set</button>
+                    </div>
                 </div>
-                <button class="button-small" ng-click="addSet(exercise)" ng-model="exercise">Add Set</button>
-                <button class="button-small" ng-click="delSet(exercise)" style="float:right">Del Set</button>
             </div>
+            
+         
         </li>
     </ul>
 
