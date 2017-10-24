@@ -10,8 +10,8 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $in
 
     $scope.onPageLoad = function () {
         storageService.loadUser();
-        //$scope.loadWorkout();
-        $scope.workout = workoutService.newWorkout();
+        $scope.workout = workoutService.continueWorkout();
+        //$scope.workout = workoutService.newWorkout();
     };
 
     $scope.$watch('workout', function (newVal, oldVal) {
@@ -22,10 +22,10 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $in
 
     $scope.changeWeight = function (set, string) {
         if (string == '-') {
-            set.weight--;
+            set.weight -= 5;
         }
         else {
-            set.weight++;
+            set.weight +=5;
         }
 
     }
@@ -42,10 +42,10 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $in
     $scope.changeValue = function (set, opp, data) {
         if (data == 'weight') {
             if (opp == '-') {
-                set.weight--;
+                set.weight -=5;
             }
             else {
-                set.weight++;
+                set.weight += 5;
             }
         }
         else {
@@ -57,6 +57,7 @@ fitnessTracker.controller('WorkoutPageContoller', function ($scope, $window, $in
             }
         }
     }
+
 
     //allows the selected set to be editied and disables all others. 
     $scope.editSet = function (exercise, currentSet) {

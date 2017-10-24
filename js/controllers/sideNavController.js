@@ -1,6 +1,6 @@
 ﻿('use strict')
 
-fitnessTracker.controller('sideNavController', function ($scope, $location) {
+fitnessTracker.controller('sideNavController', function ($scope, $window, $location, workoutService) {
     $scope.workout = $location.path() === '/workout';
     $scope.welcome = $location.path() === '/welcome';
 
@@ -10,5 +10,10 @@ fitnessTracker.controller('sideNavController', function ($scope, $location) {
 
     $scope.openNav = function () {
         document.getElementById("sideNav").style.width = "250px";
+    }
+
+    $scope.newWorkout = function () {
+        workoutService.newWorkout();
+        $window.location.href = '#!/workout';
     }
 });

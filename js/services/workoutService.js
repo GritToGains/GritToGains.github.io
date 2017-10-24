@@ -40,6 +40,7 @@ fitnessTracker.service('workoutService', function (storageService) {
 
          this.currentWorkout = newWorkout;
          console.log("Created new workout: ", this.currentWorkout);
+         storageService.saveWorkout(this.currentWorkout);
          return this.currentWorkout;
 
     };
