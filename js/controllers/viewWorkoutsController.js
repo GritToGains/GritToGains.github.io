@@ -51,12 +51,17 @@ fitnessTracker.controller('viewWorkoutsController', function ($scope, $window, $
 
     $scope.deleteWorkout = function(workout) {
         //delete the workout
-        var key = workout.date + workout.time;
+        var result = confirm("Are you sure you want to delete some Gains?");
+        if (result) {
+            var key = workout.date + workout.time;
 
-        delete $scope.user.workouts[key];
-        storageService.saveUser();
-        console.log("Deleted Workout", workout);
-        console.log("All workouts", $scope.user.workouts);
+            delete $scope.user.workouts[key];
+            storageService.saveUser();
+            console.log("Deleted Workout", workout);
+            console.log("All workouts", $scope.user.workouts); 
+        }
+
+        
     }
 
     $scope.selectWorkout = function(workout) {
