@@ -2,7 +2,6 @@
 <!--This will contain a welcome message or a welcome back message with 2 buttons to start a workout or view
     previous workouts-->
 <ng-include src="'templates/sideNav.html'"></ng-include>
-<button type="button" class="btn" ng-click="deleteAllCookies()">Reset</button>
 <div class="container-fluid" ng-cloak style="padding-top: 50px;">
     <div class="container-fluid" ng-show="showFirstWelcome">
         <div class="row">
@@ -55,6 +54,9 @@
                 <img src="/Content/images/dumbbell.svg" width="25" height="25" />
                 Continue Your Gains
                 <img src="/Content/images/dumbbell.svg" width="25" height="25" />
+            </button>
+            <button class="btn">
+                <span class="glyphicon glyphicon-alert"></span>
             </button>
         </div>
     </div>
